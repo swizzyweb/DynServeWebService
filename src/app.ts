@@ -1,8 +1,8 @@
 // @ts-ignore
 import express, { Application, Request, Response } from '@swizzyweb/express';
-import { SwizzyDynServeBackendWebService, getWebservice as getBackendWebService, routers as backendRoutes } from '@swizzyweb/swizzy-dyn-serve-backend-web-service';
+import { SwizzyDynServeBackendWebService, getWebservice as getBackendWebService, routers as backendRoutes } from '@swizzyweb/dyn-serve-backend-web-service';
 
-import { SwizzyDynServeFrontendWebService, getWebservice as getFrontendWebService, routers as frontendRoutes } from '@swizzyweb/swizzy-dyn-serve-frontend-web-service';
+import { SwizzyDynServeFrontendWebService, getWebservice as getFrontendWebService, routers as frontendRoutes } from '@swizzyweb/dyn-serve-frontend-web-service';
 import { BrowserLogger, ILogger } from '@swizzyweb/swizzy-common';
 import { IRunProps, IRunResult, IWebService, WebService } from "@swizzyweb/swizzy-web-service";
 

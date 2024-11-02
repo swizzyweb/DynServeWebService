@@ -26,8 +26,8 @@
     "@swizzyweb/browser-toolkit-web-service": "^0.1.0",
     "@swizzyweb/express": "^4.19.2",
     "@swizzyweb/swizzy-common": "^0.1.0",
-    "@swizzyweb/swizzy-dyn-serve-backend-web-service": "^0.1.0",
-    "@swizzyweb/swizzy-dyn-serve-frontend-web-service": "^0.1.0",
+    "@swizzyweb/dyn-serve-backend-web-service": "^0.1.0",
+    "@swizzyweb/dyn-serve-frontend-web-service": "^0.1.0",
     "@swizzyweb/swizzy-web-service": "^0.1.0",
     "axios": "^1.6.8"
   },
