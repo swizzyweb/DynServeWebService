@@ -3,7 +3,7 @@ import express, { Application, Request, Response } from '@swizzyweb/express';
 import { SwizzyDynServeBackendWebService, getWebservice as getBackendWebService, routers as backendRoutes } from '@swizzyweb/dyn-serve-backend-web-service';
 
 import { SwizzyDynServeFrontendWebService, getWebservice as getFrontendWebService, routers as frontendRoutes } from '@swizzyweb/dyn-serve-frontend-web-service';
-import { BrowserLogger, ILogger } from '@swizzyweb/swizzy-common';
+import { BrowserLogger, ILogger, getPackageJson } from '@swizzyweb/swizzy-common';
 import { IRunProps, IRunResult, IWebService, WebService } from "@swizzyweb/swizzy-web-service";
 
 const SERVICE_NAME = 'SwizzyDynServeWebService';
@@ -26,7 +26,6 @@ export class SwizzyDynServeWebService extends WebService {
 	async install(props: IRunProps): Promise<IRunResult> {
 		
 		this._logger.info(`Installing ${SERVICE_NAME}`);
-		//await super.install(props);
 		await this.swizzyBackendWebService.install(props);
 		await this.swizzyFrontendWebService.install(props);
 		if (this.port) {
@@ -43,28 +42,18 @@ export class SwizzyDynServeWebService extends WebService {
   	isInstalled(): boolean {
   		return this.swizzyFrontendWebService.isInstalled() && this.swizzyFrontendWebService.isInstalled();
   	}
-    // TODO: remove and use base class impl
-    /*protected installRouters(app: Application): Promise<any> {
-        app.use(webserviceRouter);
-		app.use(toolRouter);
-        return Promise.resolve();
-    }*/
-/*
-    protected uninstallRouters(app: Application): Promise<any> {
-		const logger = this._logger;
-        logger.info(`Routes ${app.routes()}`);
-        return Promise.resolve();
-    }
-	*/
-}
+  }
 
 export function install(props: any): IWebService {
-    return new SwizzyDynServeWebService(props);
+    const packageJson = getPackageJson(1);
+    const packageName = packageJson.name
+    return new SwizzyDynServeWebService({...props, packageName});
 }
 
 
 export interface ISwizzyDynServeWebServiceProps {
-	app: Application;
+  packageName: string;
+  app: Application;
 	port?: number;
 	logger?: ILogger;
 	basePath?: string;
@@ -79,39 +68,19 @@ export function getWebservices(props: ISwizzyDynServeWebServiceProps): IWebServi
 
 
 export function getWebservice(props: ISwizzyDynServeWebServiceProps): IWebService {
-	//const app = props?.app??express();
-/*app.use((req: Request, res: Response, next: any) => {
-	req.app = app;
-	next();
-});*/
-	//const webSevice = new SwizzyDynServeBackendWebService(props);
-	//webSevice.install({})
-	//const frontendService = new SwizzyDynServeFrontendWebService(props);
-	//frontendService.install({});
-	console.log(props);
+	
 	let serviceProps = props;
-	console.log(serviceProps);
 	if (!serviceProps.logger) {
 		serviceProps.logger = new BrowserLogger();
 	}
 
 	if (!serviceProps.app) {
 		throw new Error(`app must be defined`);
-		/*if (!serviceProps?.port) {
-			const errorMessage = `You must provide a port or app in props to get ${SERVICE_NAME}`;
-			serviceProps.logger.error(errorMessage);
-
-			throw new Error(errorMessage);
-		}
-		serviceProps.port = serviceProps.port ?? 3005;*/
-		/*app.listen(PORT, () => {
-    		console.info(`${SERVICE_NAME} app running on port ${PORT}`);
-		});*/
 	}
 	serviceProps.app = serviceProps.app??express();
 
-	serviceProps.logger.info(`creating new ${SERVICE_NAME}`);
-	console.log(serviceProps);
-	//serviceProps.logger.info(`${SERVICE_NAME} props: ${serviceProps}`);
+	serviceProps.logger.info(`Creating new ${SERVICE_NAME}`);
+  const packageJson = getPackageJson(1);
+  serviceProps.packageName = packageJson.name;
 	return new SwizzyDynServeWebService(serviceProps);
 };

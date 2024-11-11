@@ -1,6 +1,6 @@
 {
   "name": "@swizzyweb/dyn-serve-web-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Dynamic web application service. This service provides the ability to install web services and browser side tools dynamically on an express service.",
   "main": "dist/app.js",
   "type": "commonjs",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
-    "@swizzyweb/swerve": "^0.1.0",
+    "@swizzyweb/swerve": "^0.2.0",
     "@types/axios": "^0.14.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.8",
@@ -24,11 +24,11 @@
   },
   "dependencies": {
     "@swizzyweb/browser-toolkit-web-service": "^0.1.0",
+    "@swizzyweb/dyn-serve-backend-web-service": "^0.2.0",
+    "@swizzyweb/dyn-serve-frontend-web-service": "^0.2.0",
     "@swizzyweb/express": "^4.19.2",
-    "@swizzyweb/swizzy-common": "^0.1.0",
-    "@swizzyweb/dyn-serve-backend-web-service": "^0.1.0",
-    "@swizzyweb/dyn-serve-frontend-web-service": "^0.1.0",
-    "@swizzyweb/swizzy-web-service": "^0.1.0",
+    "@swizzyweb/swizzy-common": "^0.2.0",
+    "@swizzyweb/swizzy-web-service": "^0.2.0",
     "axios": "^1.6.8"
   },
   "types": "./dist/app.d.ts",
@@ -51,5 +51,9 @@
   "bugs": {
     "url": "https://github.com/swizzyweb/DynServeWebService/issues"
   },
-  "homepage": "https://github.com/swizzyweb/DynServeWebService#readme"
+  "homepage": "https://github.com/swizzyweb/DynServeWebService#readme",
+  "optionalDependencies": {
+    "@swizzyweb/my-first-web-service": "^0.1.0",
+    "@swizzyweb/swap-cache-db-web-service": "^0.2.0"
+  }
 }
