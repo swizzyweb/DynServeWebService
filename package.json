@@ -1,6 +1,6 @@
 {
   "name": "@swizzyweb/dyn-serve-web-service",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Dynamic web application service. This service provides the ability to install web services and browser side tools dynamically on an express service.",
   "main": "dist/app.js",
   "type": "commonjs",
@@ -27,7 +27,7 @@
     "@swizzyweb/dyn-serve-backend-web-service": "^0.2.0",
     "@swizzyweb/dyn-serve-frontend-web-service": "^0.2.1",
     "@swizzyweb/express": "^4.19.2",
-    "@swizzyweb/swizzy-common": "^0.2.1",
+    "@swizzyweb/swizzy-common": "^0.2.0",
     "@swizzyweb/swizzy-web-service": "^0.2.1",
     "axios": "^1.6.8"
   },
@@ -52,10 +52,5 @@
     "url": "https://github.com/swizzyweb/DynServeWebService/issues"
   },
   "homepage": "https://github.com/swizzyweb/DynServeWebService#readme",
-  "optionalDependencies": {
-    "@swizzyweb/my-first-web-service": "^0.2.0",
-    "@swizzyweb/speech-tool": "^1.0.0",
-    "@swizzyweb/swap-cache-db-client-tool": "^0.3.0",
-    "@swizzyweb/swap-cache-db-web-service": "^0.3.2"
-  }
+  "optionalDependencies": {}
 }
